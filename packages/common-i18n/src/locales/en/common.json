@@ -32,6 +32,7 @@
     "rename": "Rename",
     "duplicate": "Duplicate",
     "export": "Export",
+    "import": "Import",
     "change": "Change",
     "upgrade": "Upgrade",
     "search": "Search",
@@ -664,7 +665,8 @@
     "unsubscribeH1": "Do you want to unsubscribe from our mailing list?",
     "unsubscribeH2": "You will no longer receive any subscription messages from us.",
     "subscribeH1": "Do you want to subscribe to our mailing list?",
-    "subscribeH2": "You will receive any subscription messages from us."
+    "subscribeH2": "You will receive any subscription messages from us.",
+    "unsubscribeListTip": "The following users have unsubscribed from the database, you will no longer be able to send them emails"
   },
   "waitlist": {
     "title": "Waitlist",

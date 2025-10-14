@@ -32,6 +32,7 @@
     "rename": "重命名",
     "duplicate": "复制",
     "export": "导出",
+    "import": "导入",
     "change": "变更",
     "upgrade": "升级",
     "search": "搜索",
@@ -661,7 +662,8 @@
     "unsubscribeH1": "您是否要取消订阅？",
     "unsubscribeH2": "您将不再收到任何订阅消息",
     "subscribeH1": "您是否要订阅？",
-    "subscribeH2": "您将收到任何订阅消息"
+    "subscribeH2": "您将收到任何订阅消息",
+    "unsubscribeListTip": "当前数据库以下用户退订了，您将无法再给他们发送邮件"
   },
   "waitlist": {
     "title": "等待列表",
