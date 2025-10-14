@@ -632,6 +632,7 @@
     "turnOnTip": "Do you want to turn on the current automation?"
   },
   "email": {
+    "title": "Email",
     "send": "Send",
     "config": "Email Config",
     "customConfig": "Custom Email Server",
@@ -658,6 +659,7 @@
     "subscribe": "Subscribe",
     "unsubscribe": "Unsubscribe",
     "unsubscribeList": "Unsubscribe List",
+    "unsubscribeTime": "Unsubscribe Time",
     "processing": "Processing...",
     "unsubscribeH1": "Do you want to unsubscribe from our mailing list?",
     "unsubscribeH2": "You will no longer receive any subscription messages from us.",
