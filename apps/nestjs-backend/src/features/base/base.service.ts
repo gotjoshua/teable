@@ -421,6 +421,12 @@ export class BaseService {
         resourceType: ResourceType.Base,
       },
     });
+
+    await this.prismaService.txClient().emailUnsubscription.deleteMany({
+      where: {
+        baseId,
+      },
+    });
   }
 
   async moveBase(baseId: string, moveBaseRo: IMoveBaseRo) {
