@@ -166,34 +166,40 @@ These platforms are easy to deploy with one click and come with free credits.
 
 ## Development
 
-#### 1. Initialize
+#### 1. Enter Development Environment
 
 ```sh
-# Enabling the Help Management Package Manager
-corepack enable
+# Enter the devenv shell with Nix
+nix develop --impure
+```
 
-# Install project dependencies
+This sets up all required dependencies (Node.js, pnpm, build tools, SQLite, etc.)
+
+#### 2. Initialize
+
+```sh
+# Install project dependencies (corepack is already enabled)
 pnpm install
 ```
 
-#### 2. Select Database
+#### 3. Select Database
 
-we currently support `sqlite` (dev only) and `postgres`, you can switch between them by running the following command
+SQLite is configured by default. To switch to PostgreSQL:
 
 ```sh
 make switch-db-mode
 ```
 
-#### 3. Custom Environment Variables（Optional）
+#### 4. Custom Environment Variables（Optional）
 
 ```sh
 cd apps/nextjs-app
 cp .env.development .env.development.local
 ```
 
-#### 4. Run Dev Server
+#### 5. Run Dev Server
 
-you just need to start backend, it will start next server for frontend automatically, file change will be auto reload
+The backend automatically starts the Next.js frontend. File changes auto-reload.
 
 ```sh
 cd apps/nestjs-backend
