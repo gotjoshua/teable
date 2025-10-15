@@ -30,6 +30,7 @@ in
     sqlite # database for development
     (python3.withPackages (ps: [ ps.setuptools ])) # needed for node-gyp with distutils
     openssl # needed for Prisma
+    pkgs-latest.prisma-engines # Prisma engines from unstable for version 6.x
     nodePackages.typescript-language-server # many editors benefit from this
 
     # Search for packages: https://search.nixos.org/packages?channel=unstable&query=cowsay
@@ -42,6 +43,11 @@ in
   env = {
     LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
     OPENSSL_DIR = "${pkgs.openssl.dev}";
+    # Prisma engine paths for NixOS (using unstable version)
+    PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs-latest.prisma-engines}/lib/libquery_engine.node";
+    PRISMA_QUERY_ENGINE_BINARY = "${pkgs-latest.prisma-engines}/bin/query-engine";
+    PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs-latest.prisma-engines}/bin/schema-engine";
+    PRISMA_FMT_BINARY = "${pkgs-latest.prisma-engines}/bin/prisma-fmt";
   };
 
   git-hooks.hooks = {
