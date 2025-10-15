@@ -40,6 +40,7 @@ in
   scripts = { }; # Docs: https://devenv.sh/scripts/
 
   env = {
+    LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
     OPENSSL_DIR = "${pkgs.openssl.dev}";
   };
 
