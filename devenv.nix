@@ -28,7 +28,7 @@ in
     stdenv.cc.cc.lib # C++ standard library for native modules
     gnumake # needed for make commands
     sqlite # database for development
-    python3 # needed for node-gyp
+    (python3.withPackages (ps: [ ps.setuptools ])) # needed for node-gyp with distutils
     openssl # needed for Prisma
     nodePackages.typescript-language-server # many editors benefit from this
 
