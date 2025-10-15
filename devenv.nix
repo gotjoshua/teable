@@ -11,6 +11,7 @@ in
     nix.enable = true;
     javascript = {
       enable = true; # source: https://github.com/cachix/devenv/blob/main/src/modules/languages/javascript.nix
+      corepack.enable = true; # Enable corepack for pnpm management
       # TODO remove whichever you don't need:
       npm.enable = true;
       pnpm = {
@@ -20,19 +21,27 @@ in
       yarn.enable = true;
     };
     typescript.enable = true;
-    deno.enable = true;
   };
 
   packages = with pkgs; [
     gcc # needed for some npm packages
+    stdenv.cc.cc.lib # C++ standard library for native modules
+    gnumake # needed for make commands
+    sqlite # database for development
+    python3 # needed for node-gyp
+    openssl # needed for Prisma
     nodePackages.typescript-language-server # many editors benefit from this
 
-    # Search for packages: https://search.nixos.org/packages?channel=unstable&query=cowsay 
+    # Search for packages: https://search.nixos.org/packages?channel=unstable&query=cowsay
     # (note: this searches on unstable channel, you might need to use pkgs-latest for some):
     #pkgs-latest.task-keeper
   ];
 
   scripts = { }; # Docs: https://devenv.sh/scripts/
+
+  env = {
+    OPENSSL_DIR = "${pkgs.openssl.dev}";
+  };
 
   git-hooks.hooks = {
     # Docs: https://devenv.sh/pre-commit-hooks/
