@@ -3,11 +3,11 @@ import { axios } from '../axios';
 import { registerRoute, urlBuilder } from '../utils';
 import { z } from '../zod';
 
-export const UNSUBSCRIBE_EXPORT_LIST = '/unsubscribe/export-list/{baseId}';
+export const EXPORT_UNSUBSCRIBE_LIST = '/unsubscribe/export-list/{baseId}';
 
 export const exportUnsubscribeListRoute: RouteConfig = registerRoute({
   method: 'get',
-  path: UNSUBSCRIBE_EXPORT_LIST,
+  path: EXPORT_UNSUBSCRIBE_LIST,
   description: 'Export unsubscribe list',
   request: {
     params: z.object({
@@ -22,5 +22,5 @@ export const exportUnsubscribeListRoute: RouteConfig = registerRoute({
 });
 
 export const exportUnsubscribeList = async (baseId: string) => {
-  return await axios.get(urlBuilder(UNSUBSCRIBE_EXPORT_LIST, { baseId }));
+  return await axios.get(urlBuilder(EXPORT_UNSUBSCRIBE_LIST, { baseId }));
 };

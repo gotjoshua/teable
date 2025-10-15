@@ -4,7 +4,7 @@ import { MailType } from '../mail/types';
 import { registerRoute, urlBuilder } from '../utils';
 import { z } from '../zod';
 
-export const UNSUBSCRIBE = '/unsubscribe/{token}';
+export const GET_UNSUBSCRIBE = '/unsubscribe/{token}';
 
 export const unsubscribeBaseSchema = z.object({
   type: z.nativeEnum(MailType),
@@ -24,7 +24,7 @@ export type IUnsubscribeAutomationSendEmailAction = z.infer<
   typeof unsubscribeAutomationSendEmailActionSchema
 >;
 
-export type IUnsubscribe = IUnsubscribeAutomationSendEmailAction;
+export type IUnsubscribe = IUnsubscribeBase | IUnsubscribeAutomationSendEmailAction;
 
 export const unsubscribeVoSchema = unsubscribeBaseSchema.extend({
   title: z.string().optional(),
@@ -35,7 +35,7 @@ export type IUnsubscribeVo = z.infer<typeof unsubscribeVoSchema>;
 
 export const getUnSubscribeRoute: RouteConfig = registerRoute({
   method: 'get',
-  path: UNSUBSCRIBE,
+  path: GET_UNSUBSCRIBE,
   description: 'unsubscribe a email',
   request: {
     params: z.object({
@@ -56,5 +56,5 @@ export const getUnSubscribeRoute: RouteConfig = registerRoute({
 });
 
 export const getUnSubscribe = async (token: string) => {
-  return axios.get<IUnsubscribeVo>(urlBuilder(UNSUBSCRIBE, { token }));
+  return axios.get<IUnsubscribeVo>(urlBuilder(GET_UNSUBSCRIBE, { token }));
 };

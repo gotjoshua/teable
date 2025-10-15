@@ -2,7 +2,8 @@ import type { RouteConfig } from '@asteasolutions/zod-to-openapi';
 import { axios } from '../axios';
 import { registerRoute, urlBuilder } from '../utils';
 import { z } from '../zod';
-import { UNSUBSCRIBE } from './get';
+
+export const UPDATE_UNSUBSCRIBE = '/unsubscribe/{token}';
 
 export const updateSubscriptionRoSchema = z.object({
   subscriptionStatus: z.boolean(),
@@ -12,7 +13,7 @@ export type IUpdateSubscriptionRo = z.infer<typeof updateSubscriptionRoSchema>;
 
 export const updateSubscriptionRoute: RouteConfig = registerRoute({
   method: 'post',
-  path: UNSUBSCRIBE,
+  path: UPDATE_UNSUBSCRIBE,
   description: 'unsubscribe a email',
   request: {
     params: z.object({
@@ -40,5 +41,5 @@ export const updateSubscriptionRoute: RouteConfig = registerRoute({
 });
 
 export const updateSubscription = async (token: string, ro: IUpdateSubscriptionRo) => {
-  return axios.post<boolean>(urlBuilder(UNSUBSCRIBE, { token }), ro);
+  return axios.post<boolean>(urlBuilder(UPDATE_UNSUBSCRIBE, { token }), ro);
 };

@@ -4,7 +4,7 @@ import { axios } from '../axios';
 import { registerRoute, urlBuilder } from '../utils';
 import { z } from '../zod';
 
-export const UNSUBSCRIBE_IMPORT_LIST = '/unsubscribe/import-list/{baseId}';
+export const IMPORT_UNSUBSCRIBE_LIST = '/unsubscribe/import-list/{baseId}';
 
 export const importUnsubscribeListRoSchema = z.object({
   notify: notifyVoSchema,
@@ -14,7 +14,7 @@ export type ImportUnsubscribeListRo = z.infer<typeof importUnsubscribeListRoSche
 
 export const importUnsubscribeListRoute: RouteConfig = registerRoute({
   method: 'post',
-  path: UNSUBSCRIBE_IMPORT_LIST,
+  path: IMPORT_UNSUBSCRIBE_LIST,
   description: 'Import unsubscribe list',
   request: {
     params: z.object({
@@ -44,5 +44,5 @@ export const importUnsubscribeList = async (
   baseId: string,
   importUnsubscribeListRo: ImportUnsubscribeListRo
 ) => {
-  return await axios.post(urlBuilder(UNSUBSCRIBE_IMPORT_LIST, { baseId }), importUnsubscribeListRo);
+  return await axios.post(urlBuilder(IMPORT_UNSUBSCRIBE_LIST, { baseId }), importUnsubscribeListRo);
 };

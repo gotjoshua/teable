@@ -3,7 +3,7 @@ import { axios } from '../axios';
 import { registerRoute, urlBuilder } from '../utils';
 import { z } from '../zod';
 
-export const UNSUBSCRIBE_LIST = '/unsubscribe/list/{baseId}';
+export const GET_UNSUBSCRIBE_LIST = '/unsubscribe/list/{baseId}';
 
 export const unsubscribeItemVoSchema = z.object({
   email: z.string(),
@@ -26,7 +26,7 @@ export type IUnsubscribeListPaginatedVo = z.infer<typeof unsubscribeListPaginate
 
 export const getUnSubscribeListRoute: RouteConfig = registerRoute({
   method: 'get',
-  path: UNSUBSCRIBE_LIST,
+  path: GET_UNSUBSCRIBE_LIST,
   description: 'Get paginated unsubscribe list by baseId',
   request: {
     params: z.object({
@@ -54,7 +54,7 @@ export const getUnSubscribeList = async (
   baseId: string,
   params?: { pageSize?: number; cursor?: string }
 ) => {
-  return axios.get<IUnsubscribeListPaginatedVo>(urlBuilder(UNSUBSCRIBE_LIST, { baseId }), {
+  return axios.get<IUnsubscribeListPaginatedVo>(urlBuilder(GET_UNSUBSCRIBE_LIST, { baseId }), {
     params,
   });
 };
